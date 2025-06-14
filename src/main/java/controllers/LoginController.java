@@ -2,15 +2,21 @@ package controllers; /**
  * Sample Skeleton for 'LoginView.fxml' Controller Class
  */
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import Facade.Facade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 
-public class PleaseProvideControllerClassName {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class LoginController {
+    private Facade facade;
+    public LoginController() {
+        facade = Facade.getInstance();
+    }
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -43,7 +49,7 @@ public class PleaseProvideControllerClassName {
 
     @FXML
     void logIn(ActionEvent event) {
-
+        facade.registrarUsuario();
     }
 
     @FXML

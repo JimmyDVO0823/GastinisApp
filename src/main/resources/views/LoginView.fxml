@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="529.0" prefWidth="600.0" style="-fx-background-color: #0e4c75;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="529.0" prefWidth="600.0" style="-fx-background-color: #0e4c75;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <top>
       <Label alignment="CENTER" prefHeight="46.0" prefWidth="210.0" text="Gastinis Econominis" textFill="#86cffb" BorderPane.alignment="CENTER">
          <font>
@@ -43,7 +44,7 @@
                         <Font name="Roboto Condensed Regular" size="22.0" />
                      </font>
                   </Label>
-                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="240.0" promptText="Usuario">
+                  <TextField fx:id="txtUser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="240.0" promptText="Usuario">
                      <VBox.margin>
                         <Insets bottom="16.0" left="40.0" right="40.0" top="16.0" />
                      </VBox.margin>
@@ -51,7 +52,7 @@
                         <Font size="15.0" />
                      </font>
                   </TextField>
-                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="240.0" promptText="Contraseña">
+                  <TextField fx:id="txtPassword" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="240.0" promptText="Contraseña">
                      <VBox.margin>
                         <Insets bottom="16.0" left="40.0" right="40.0" top="16.0" />
                      </VBox.margin>
@@ -59,21 +60,24 @@
                         <Font size="15.0" />
                      </font>
                   </TextField>
-                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="240.0" style="-fx-background-color: #BBE1F8;" text="Iniciar Sesión">
+                  <Button fx:id="cmdLogin" mnemonicParsing="false" onAction="#logIn" prefHeight="40.0" prefWidth="240.0" style="-fx-background-color: #BBE1F8;" text="Iniciar Sesión">
                      <VBox.margin>
                         <Insets bottom="16.0" top="16.0" />
                      </VBox.margin>
                      <font>
                         <Font size="15.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
-                  <Hyperlink accessibleRole="BUTTON" text="¿Perdiste la contraseña?" textFill="#86cffb" />
-                  <Hyperlink accessibleRole="BUTTON" text="¿No tienes cuenta? Regístrate" textFill="#86cffb" />
+                  <Hyperlink fx:id="cmdLostPassword" accessibleRole="BUTTON" onAction="#lostPassword" text="¿Perdiste la contraseña?" textFill="#86cffb" />
+                  <Hyperlink fx:id="cmdSignIn" accessibleRole="BUTTON" onAction="#signIn" text="¿No tienes cuenta? Regístrate" textFill="#86cffb" />
                </children>
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
                <children>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #0e4c75;" text="Volver" textFill="#86cffb">
+                  <Button fx:id="cmdBack" mnemonicParsing="false" onAction="#back" style="-fx-background-color: #0e4c75;" text="Volver" textFill="#86cffb">
                      <VBox.margin>
                         <Insets top="12.0" />
                      </VBox.margin>
