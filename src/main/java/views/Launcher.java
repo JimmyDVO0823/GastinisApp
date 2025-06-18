@@ -1,3 +1,4 @@
+package views;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -7,7 +8,10 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Launcher extends Application {
-
+    private static Stage stage;
+    public static Stage getStage() {
+        return stage;
+    }
     /**
      * Punto de entrada de JavaFX.
      * @param primaryStage ventana principal de la aplicación
@@ -15,6 +19,8 @@ public class Launcher extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
+        stage = primaryStage;
+        Image icon = new Image(getClass().getResourceAsStream("/images/mercado.png"));
         // 1. Crear un FXMLLoader apuntando al recurso FXML dentro de src/main/resources
         //    Asegúrate de que el archivo esté en: src/main/resources/view/MainView.fxml
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/LoginView.fxml"));
@@ -31,7 +37,8 @@ public class Launcher extends Application {
 
         // 5. Asignar un título a la ventana principal
         primaryStage.setTitle("Log in");
-        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("images/mercado.png")));
+        primaryStage.getIcons().add(icon);
+        //primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("images/mercado.png")));
 
         // 6. Establecer la escena en el Stage
         primaryStage.setScene(scene);
@@ -47,4 +54,5 @@ public class Launcher extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
 }
