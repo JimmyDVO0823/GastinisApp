@@ -8,7 +8,9 @@ public class User {
         this.name = name;
         this.email = email;
         this.password = password;
+        System.out.println("Inicio de sesión correcto");
         System.out.println(this);
+        System.out.println("=====================================");
     }
 
     public String getName() {
@@ -37,6 +39,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User [name=" + name + ", email=" + email + ", password=" + password + "]";
+        return "Usuario nombre = " + name + "\n Correo = " + email +
+                "\n Contraseña = " + password;
     }
 }

@@ -1,14 +1,19 @@
 package Facade;
 
 import DAOs.DaoException;
-import DAOs.UsuarioDAO;
+import DAOs.OperationsDAO;
+import DAOs.UserDAO;
 import personas.User;
 
 public class Facade {
     private User user;
     private static Facade instance;
+    UserDAO userDAO;
+    OperationsDAO opDAO;
 
     private Facade() {
+        userDAO = new UserDAO();
+        opDAO = new OperationsDAO();
     }
 
     public static Facade getInstance() {
@@ -18,15 +23,14 @@ public class Facade {
         return instance;
     }
 
-    UsuarioDAO dao = new UsuarioDAO();
 
     public void registerUser(String email, String username, String password) {
-        dao.registerUser(email, username, password);
+        userDAO.registerUser(email, username, password);
     }
 
     public void logIn(String nameEmail, String password) {
         try {
-            user = dao.loginUser(nameEmail, password);
+            user = userDAO.loginUser(nameEmail, password);
         } catch (DaoException e) {
             e.printStackTrace();
         }

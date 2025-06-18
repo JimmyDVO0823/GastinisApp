@@ -5,9 +5,8 @@ import personas.User;
 
 import javax.swing.*;
 import java.sql.*;
-import java.util.jar.JarOutputStream;
 
-public class UsuarioDAO {
+public class UserDAO {
     final String INSERT_USER = "INSERT INTO USUARIOS (NOMBRE,EMAIL, CONTRASENIA) " +
             "VALUES (?,?,?)";
     final String CREAR_TABLA  = "CREATE TABLE IF NOT EXISTS USUARIOS " +
@@ -20,7 +19,7 @@ public class UsuarioDAO {
                     "WHERE (nombre = ? OR email = ?) " +
                     "  AND CONTRASENIA = ?";
 
-    public UsuarioDAO() {
+    public UserDAO() {
         createTable();
     }
 
@@ -30,7 +29,8 @@ public class UsuarioDAO {
             stmt.execute(CREAR_TABLA);
             System.out.println("Tabla 'USUARIOS' verificada o creada.");
         } catch (SQLException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,
+                    "Error al crear el tabla USUARIOS.");
         }
     }
 
@@ -56,7 +56,7 @@ public class UsuarioDAO {
             stmt.setString(1, name);
             stmt.setString(2, name);
             stmt.setString(3, password);
-            System.out.println(stmt);
+            //System.out.println(stmt);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     // Si hay coincidencia, mapeas y devuelves el usuario
