@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import Facade.Facade;
+import Managers.StageManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -45,7 +46,7 @@ public class SignInController {
 
     @FXML
     void back(ActionEvent event) {
-        stage.close();
+        StageManager.switchScene("MainMenu");
     }
 
     @FXML
@@ -73,7 +74,7 @@ public class SignInController {
         return stage;
     }
 
-    public static void setStage(Stage s) {
-        stage = s;
+    public static void setStage(Stage stage) {
+        SignInController.stage = stage;
     }
 }

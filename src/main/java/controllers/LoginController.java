@@ -3,6 +3,7 @@ package controllers; /**
  */
 
 import Facade.Facade;
+import Managers.StageManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +21,7 @@ import java.util.ResourceBundle;
 
 public class LoginController {
     private Facade facade;
+    private static Stage stage;
     public LoginController() {
         facade = Facade.getInstance();
     }
@@ -50,7 +52,7 @@ public class LoginController {
 
     @FXML
     void back(ActionEvent event) {
-
+        StageManager.switchScene("MainMenu");
     }
 
     @FXML
@@ -71,36 +73,8 @@ public class LoginController {
     }
 
     public void startSignInView() throws Exception {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/SignInView.fxml"));
-
-
-            // 2. Cargar la interfaz declarada en el FXML y obtener el nodo raíz
-            Parent root = loader.load();
-            Stage stage = new Stage();
-            // 3. (Opcional) Obtener el controlador asociado al FXML para pasarle datos o inicializar lógica
-            //    MainController controller = loader.getController();
-            //    controller.initData(algo);
-
-            // 4. Crear la escena, pasando el nodo raíz y definiendo tamaño inicial (opcional)
-            Scene scene = new Scene(root);
-
-            // 5. Asignar un título a la ventana principal
-            stage.setTitle("Log in");
-            //stage.getIcons().add(new Image(getClass().getResourceAsStream("images/mercado.png")));
-
-            // 6. Establecer la escena en el Stage
-            stage.setScene(scene);
-
-            // 7. Mostrar la ventana en pantalla
-            stage.show();
-
-            SignInController.setStage(stage);
-        }catch (IOException e){
-            e.printStackTrace();
-        }
+        StageManager.switchScene("SignIn");
     }
-
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
@@ -113,4 +87,11 @@ public class LoginController {
 
     }
 
+    public static Stage getStage() {
+        return stage;
+    }
+
+    public static void setStage(Stage stage) {
+        LoginController.stage = stage;
+    }
 }

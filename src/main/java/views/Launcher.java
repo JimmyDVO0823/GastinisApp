@@ -1,17 +1,13 @@
 package views;
 
+import Managers.StageManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Launcher extends Application {
-    private static Stage stage;
-    public static Stage getStage() {
-        return stage;
-    }
     /**
      * Punto de entrada de JavaFX.
      * @param primaryStage ventana principal de la aplicación
@@ -19,31 +15,39 @@ public class Launcher extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
-        stage = primaryStage;
+        //Setero al stageManager
+        primaryStage.setFullScreen(true);
+        StageManager.setStage(primaryStage);
+
+
+        //seteamos una imagen
         Image icon = new Image(getClass().getResourceAsStream("/images/mercado.png"));
+
         // 1. Crear un FXMLLoader apuntando al recurso FXML dentro de src/main/resources
-        //    Asegúrate de que el archivo esté en: src/main/resources/view/MainView.fxml
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/LoginView.fxml"));
+        FXMLLoader mainMenuLoader = new FXMLLoader(getClass().getResource("/views/MainMenu.fxml"));
+        FXMLLoader LoginLoader = new FXMLLoader(getClass().getResource("/views/LoginView.fxml"));
+        FXMLLoader SignInLoader = new FXMLLoader(getClass().getResource("/views/SignInView.fxml"));
 
-        // 2. Cargar la interfaz declarada en el FXML y obtener el nodo raíz
-        Parent root = loader.load();
-
-        // 3. (Opcional) Obtener el controlador asociado al FXML para pasarle datos o inicializar lógica
-        //    MainController controller = loader.getController();
-        //    controller.initData(algo);
-
-        // 4. Crear la escena, pasando el nodo raíz y definiendo tamaño inicial (opcional)
-        Scene scene = new Scene(root);
+        //Creamos las escenas
+        Scene mainMenuScene = new Scene(mainMenuLoader.load());
+        Scene LoginScene = new Scene(LoginLoader.load());
+        Scene SignInScene = new Scene(SignInLoader.load());
 
         // 5. Asignar un título a la ventana principal
-        primaryStage.setTitle("Log in");
+        primaryStage.setTitle("Menú de Inicio");
         primaryStage.getIcons().add(icon);
-        //primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("images/mercado.png")));
+
+        //Aniadimos los objetos scene al manager
+        StageManager.addScene("MainMenu",mainMenuScene);
+        StageManager.addScene("LogIn",LoginScene);
+        StageManager.addScene("SignIn",SignInScene);
 
         // 6. Establecer la escena en el Stage
-        primaryStage.setScene(scene);
+        primaryStage.setScene(mainMenuScene);
 
-        // 7. Mostrar la ventana en pantalla
+        // 7. Aplciar estiulos
+
+        // 8. Mostrar la ventana en pantalla
         primaryStage.show();
     }
 
