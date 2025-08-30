@@ -16,15 +16,12 @@
    <center>
       <VBox fx:id="vbox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="cmdOperations" mnemonicParsing="false" onAction="#goOperationMenu" styleClass="mainMenuCmd" text="Hacer Operaciones">
-               <VBox.margin>
-                  <Insets top="40.0" />
-               </VBox.margin></Button>
+            <Button fx:id="cmdDiccionario" mnemonicParsing="false" onAction="#goDictionary" text="Diccionario" />
             <Button fx:id="cmdLogIn" mnemonicParsing="false" onAction="#logIn" styleClass="mainMenuCmd" text="Iniciar sesión">
                <VBox.margin>
                   <Insets top="40.0" />
                </VBox.margin></Button>
-            <Button fx:id="cmdSignIn" mnemonicParsing="false" onAction="#signIn" styleClass="mainMenuCmd" text="Reistrarse">
+            <Button fx:id="cmdSignIn" mnemonicParsing="false" onAction="#signIn" styleClass="mainMenuCmd" text="Registrarse">
                <VBox.margin>
                   <Insets top="40.0" />
                </VBox.margin></Button>

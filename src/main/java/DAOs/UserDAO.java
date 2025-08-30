@@ -44,6 +44,7 @@ public class UserDAO {
             stmt.executeUpdate();
 
             System.out.println("Usuario registrado con éxito.");
+            System.out.println("Nombre: " + name + "Correo: " + email + "Contrasenia: " + password);
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Nombre de usuario inválido.");

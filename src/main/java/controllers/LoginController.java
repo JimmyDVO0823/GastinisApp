@@ -60,6 +60,9 @@ public class LoginController {
         String user = txtUser.getText();
         String pass = txtPassword.getText();
         facade.logIn(user, pass);
+        if (facade.getUser() != null) {
+            StageManager.switchScene("Operations");
+        }
     }
 
     @FXML

@@ -27,11 +27,14 @@ public class Launcher extends Application {
         FXMLLoader mainMenuLoader = new FXMLLoader(getClass().getResource("/views/MainMenu.fxml"));
         FXMLLoader LoginLoader = new FXMLLoader(getClass().getResource("/views/LoginView.fxml"));
         FXMLLoader SignInLoader = new FXMLLoader(getClass().getResource("/views/SignInView.fxml"));
+        FXMLLoader VocabularyLoader = new FXMLLoader(getClass().getResource("/views/Vocabulary.fxml"));
+
 
         //Creamos las escenas
         Scene mainMenuScene = new Scene(mainMenuLoader.load());
         Scene LoginScene = new Scene(LoginLoader.load());
         Scene SignInScene = new Scene(SignInLoader.load());
+        Scene OperationsScene = new Scene(VocabularyLoader.load());
 
         // 5. Asignar un título a la ventana principal
         primaryStage.setTitle("Menú de Inicio");
@@ -41,6 +44,7 @@ public class Launcher extends Application {
         StageManager.addScene("MainMenu",mainMenuScene);
         StageManager.addScene("LogIn",LoginScene);
         StageManager.addScene("SignIn",SignInScene);
+        StageManager.addScene("Operations",OperationsScene);
 
         // 6. Establecer la escena en el Stage
         primaryStage.setScene(mainMenuScene);
